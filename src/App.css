@@ -11,3 +11,8 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.Root{
+  display: flex;
+}
+#map{height: 500px}

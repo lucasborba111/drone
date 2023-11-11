@@ -1,5 +1,7 @@
 import FormPartida from "../components/forms/FormPartida";
-
+import MapaDrone from "../components/map/MapDrone";
 export default function Trajeto() {
-  return <FormPartida />;
+  return  <div id="map">
+    <MapaDrone/>
+  </div>
 }
