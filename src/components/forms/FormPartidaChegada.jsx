@@ -1,83 +1,11 @@
 import LoadingButton from "@mui/lab/LoadingButton";
 import { TextField, FormControl } from "@mui/material";
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
-import { outlinedInputClasses } from "@mui/material/OutlinedInput";
-
-const customTheme = (outerTheme) =>
-  createTheme({
-    palette: {
-      mode: outerTheme.palette.mode,
-    },
-    components: {
-      MuiTextField: {
-        styleOverrides: {
-          root: {
-            "--TextField-brandBorderColor": "#E0E3E7",
-            "--TextField-brandBorderHoverColor": "#B2BAC2",
-            "--TextField-brandBorderFocusedColor": "#6F7E8C",
-            "& label.Mui-focused": {
-              color: "var(--TextField-brandBorderFocusedColor)",
-            },
-            "& label": {
-              color: "white",
-            },
-          },
-        },
-      },
-      MuiOutlinedInput: {
-        styleOverrides: {
-          notchedOutline: {
-            borderColor: "var(--TextField-brandBorderColor)",
-          },
-          root: {
-            [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: "var(--TextField-brandBorderHoverColor)",
-            },
-            [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: "var(--TextField-brandBorderFocusedColor)",
-            },
-          },
-        },
-      },
-      MuiFilledInput: {
-        styleOverrides: {
-          root: {
-            "&:before, &:after": {
-              borderBottom: "2px solid var(--TextField-brandBorderColor)",
-            },
-            "&:hover:not(.Mui-disabled, .Mui-error):before": {
-              borderBottom: "2px solid var(--TextField-brandBorderHoverColor)",
-            },
-            "&.Mui-focused:after": {
-              borderBottom:
-                "2px solid var(--TextField-brandBorderFocusedColor)",
-            },
-          },
-        },
-      },
-      MuiInput: {
-        styleOverrides: {
-          root: {
-            "&:before": {
-              borderBottom: "2px solid var(--TextField-brandBorderColor)",
-              color: "white var(#ffffff)",
-            },
-            "&:hover:not(.Mui-disabled, .Mui-error):before": {
-              borderBottom: "2px solid var(--TextField-brandBorderHoverColor)",
-            },
-            "&.Mui-focused:after": {
-              borderBottom:
-                "2px solid var(--TextField-brandBorderFocusedColor)",
-            },
-          },
-        },
-      },
-    },
-  });
+import customTheme from "./customTheme";
+import { ThemeProvider } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 
 export default function FormPartidaChegada({ calcularPartida, loading }) {
   const outerTheme = useTheme();
-
   return (
     <form className="formulario" onSubmit={calcularPartida}>
       <h3>Calcuar rota de entrega</h3>
@@ -116,6 +44,7 @@ export default function FormPartidaChegada({ calcularPartida, loading }) {
           loading={loading}
           loadingIndicator="Carregando..."
           variant="contained"
+          fullWidth={true}
         >
           Calcular
         </LoadingButton>
