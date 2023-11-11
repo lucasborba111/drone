@@ -1,14 +1,13 @@
 export function calcularRota(event) {
+  event.preventDefault();
+
   const inputs = Array.from(event.target);
   const dto = {};
 
-  inputs.forEach((inputDom) => {
-    if (inputDom.type === "number") {
-      inputDom.value = parseInt(inputDom.value);
-    }
+  inputs.map(({ id, value, type } = {}) => {
+    if (!id) return;
+    if (type === "number") value = parseInt(value);
 
-    dto[inputDom.id] = inputDom.value;
+    dto[id] = value;
   });
-
-  debugger;
 }
