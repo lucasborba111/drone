@@ -1,9 +1,34 @@
-import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect, useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
 
 export default function MapaDrone({ pLat, pLng }) {
+  const [pontoPartida, setPontoPartida] = useState([]);
+  const [pontoChegada, setPontoChega] = useState([]);
+
   const RotaDrone = function () {
     const map = useMap();
+
+    useMapEvents({
+      click(e) {
+        debugger;
+        if (!pontoPartida.length) {
+          return setPontoPartida(Object.values(e.latlng));
+        }
+        if (!pontoChegada.length) {
+          return setPontoChega(Object.values(e.latlng));
+        }
+        setPontoChega([]);
+        setPontoPartida([]);
+        return;
+      },
+    });
 
     useEffect(() => {
       map.flyTo([pLat, pLng], map.getZoom());
@@ -23,9 +48,20 @@ export default function MapaDrone({ pLat, pLng }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <RotaDrone />
-      {/* <Marker position={[pLat, pLng]}>
-        <Popup>Ponto de partida</Popup>
-      </Marker> */}
+      {pontoPartida.length ? (
+        <Marker position={pontoPartida}>
+          <Popup>Ponto de partida</Popup>
+        </Marker>
+      ) : (
+        <></>
+      )}
+      {pontoChegada.length ? (
+        <Marker position={pontoChegada}>
+          <Popup>Ponto de partida</Popup>
+        </Marker>
+      ) : (
+        <></>
+      )}
     </MapContainer>
   );
 }
