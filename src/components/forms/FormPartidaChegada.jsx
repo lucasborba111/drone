@@ -46,11 +46,16 @@ export default function FormPartidaChegada({ calcularPartida, loading }) {
               inputProps={{ step: "any" }}
             />
           </FormControl>
-          <FormControl required error={false}>
+          <FormControl required>
             <TextField label="Carga" id="carga" type="text" />
           </FormControl>
-          <FormControl required error={false}>
-            <TextField label="Peso" id="pedo" type="text" />
+          <FormControl required>
+            <TextField
+              label="Peso"
+              id="peso"
+              type="number"
+              inputProps={{ step: "any" }}
+            />
           </FormControl>
         </ThemeProvider>
       </div>
