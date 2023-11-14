@@ -24,8 +24,10 @@ function App() {
 
   return (
     <div className="App">
-      <FormPartidaChegada calcularPartida={calcularPartida} loading={loading} />
-      <MapaDrone pLat={pLat} pLng={pLng} />
+      {
+        loading ?<img alt='qualquercoisa' src='/drone.gif' width={300} height={300} />:(<><FormPartidaChegada calcularPartida={calcularPartida} loading={loading} />
+        <MapaDrone pLat={pLat} pLng={pLng} /></>)
+      }
     </div>
   );
 }
