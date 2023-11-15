@@ -17,8 +17,8 @@ async function calculaRota(e, setPontoPartida, setPontoChegada) {
 
   const dto = getDtoRota(e);
 
-  setPontoPartida([dto.pLat, dto.pLng]);
-  setPontoChegada([dto.cLat, dto.cLng]);
+  if (dto.pLat && dto.pLng) setPontoPartida([dto.pLat, dto.pLng]);
+  if (dto.cLat && dto.cLng) setPontoChegada([dto.cLat, dto.cLng]);
 }
 
 export { calculaRota };

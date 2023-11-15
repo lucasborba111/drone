@@ -4,12 +4,22 @@ import customTheme from "./customTheme";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 import { calculaRota } from "../../calculaRota";
 import { Context } from "../../Context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function FormPartidaChegada() {
   const outerTheme = useTheme();
-  const { setPontoPartida, pontoPartida, setPontoChegada, pontoChegada } =
-    useContext(Context);
+  const {
+    setPontoPartida,
+    setPontoChegada,
+    cLng,
+    pLng,
+    cLat,
+    pLat,
+    setPLat,
+    setPLng,
+    setCLat,
+    setCLng,
+  } = useContext(Context);
 
   return (
     <form
@@ -25,11 +35,9 @@ export default function FormPartidaChegada() {
               label="Latitude partida"
               id="pLat"
               type="number"
-              value={pontoPartida[0] || ""}
+              value={pLat || ""}
               autoFocus={true}
-              onChange={(e) =>
-                setPontoPartida([e.target.value, pontoPartida[1]])
-              }
+              onChange={(e) => setPLat(e.target.value)}
               inputProps={{ step: "any" }}
             />
           </FormControl>
@@ -39,10 +47,8 @@ export default function FormPartidaChegada() {
               label="Longitude partida"
               id="pLng"
               type="number"
-              value={pontoPartida[1] || ""}
-              onChange={(e) =>
-                setPontoPartida([pontoPartida[0], e.target.value])
-              }
+              value={pLng || ""}
+              onChange={(e) => setPLng(e.target.value)}
               autoFocus={true}
               inputProps={{ step: "any" }}
             />
@@ -53,11 +59,9 @@ export default function FormPartidaChegada() {
               label="Latitude chegada"
               id="cLat"
               type="number"
-              value={pontoChegada[0] || ""}
+              value={cLat || ""}
               inputProps={{ step: "any" }}
-              onChange={(e) =>
-                setPontoChegada([e.target.value, pontoChegada[1]])
-              }
+              onChange={(e) => setCLat(e.target.value)}
               autoFocus={true}
             />
           </FormControl>
@@ -67,10 +71,8 @@ export default function FormPartidaChegada() {
               label="Longitude chegada"
               id="cLng"
               type="number"
-              value={pontoChegada[1] || ""}
-              onChange={(e) =>
-                setPontoChegada([pontoChegada[0], e.target.value])
-              }
+              value={cLng || ""}
+              onChange={(e) => setCLng(e.target.value)}
               autoFocus={true}
               inputProps={{ step: "any" }}
             />

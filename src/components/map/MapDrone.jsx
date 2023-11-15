@@ -18,14 +18,14 @@ export default function MapaDrone() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <RotaDrone />
-      {pontoPartida.length ? (
+      {pontoPartida.length === 2 ? (
         <Marker position={pontoPartida}>
           <Popup>Ponto de partida</Popup>
         </Marker>
       ) : (
         <></>
       )}
-      {pontoChegada.length ? (
+      {pontoChegada.length === 2 ? (
         <Marker position={pontoChegada}>
           <Popup>Ponto de chegada</Popup>
         </Marker>

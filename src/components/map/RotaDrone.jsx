@@ -4,30 +4,55 @@ import { useMap, useMapEvents } from "react-leaflet";
 
 export default function RotaDrone() {
   const map = useMap();
-  const { pontoPartida, setPontoPartida, pontoChegada, setPontoChegada } =
-    useContext(Context);
+  const {
+    pontoPartida,
+    setPontoPartida,
+    pontoChegada,
+    setPontoChegada,
+    setPLatLng,
+    setCLatLng,
+    limpaCoordenadas,
+  } = useContext(Context);
 
   useMapEvents({
     click(e) {
       if (!pontoPartida.length) {
-        return setPontoPartida(Object.values(e.latlng));
+        const latlng = Object.values(e.latlng);
+
+        setPontoPartida(latlng);
+        setPLatLng(latlng);
+        return;
       }
 
       if (!pontoChegada.length) {
-        return setPontoChegada(Object.values(e.latlng));
+        const latlng = Object.values(e.latlng);
+
+        setPontoChegada(latlng);
+        setCLatLng(latlng);
+
+        return;
       }
 
       setPontoChegada([]);
       setPontoPartida([]);
+      limpaCoordenadas();
       return;
     },
   });
 
+  function validaPontoPartida() {
+    return (
+      pontoPartida.length &&
+      !pontoPartida.some((p) => !p) &&
+      !pontoChegada.length
+    );
+  }
+
   useEffect(() => {
-    if (pontoPartida.length) {
+    if (validaPontoPartida()) {
       map.flyTo(pontoPartida, map.getZoom());
     }
-  }, [pontoPartida]);
+  }, [pontoPartida, pontoChegada]);
 
   return null;
 }
