@@ -3,8 +3,8 @@ import { useState, createContext } from "react";
 const Context = createContext();
 
 function ContextProvider(props) {
-  const [pontoPartida, setPontoPartida] = useState([51.505, -0.09]);
-  const [pontoChegada, setPontoChegada] = useState([]);
+  const [pontoPartida, setPontoPartida] = useState(null);
+  const [pontoChegada, setPontoChegada] = useState(null);
 
   const [pLat, setPLat] = useState("");
   const [cLat, setCLat] = useState("");
@@ -14,6 +14,9 @@ function ContextProvider(props) {
   function limpaCoordenadas() {
     setCLatLng("", "");
     setPLatLng("", "");
+
+    setPontoChegada(null);
+    setPontoPartida(null);
   }
 
   function setPLatLng([lat, lng]) {

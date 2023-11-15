@@ -4,7 +4,7 @@ import customTheme from "./customTheme";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 import { calculaRota } from "../../calculaRota";
 import { Context } from "../../Context";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 export default function FormPartidaChegada() {
   const outerTheme = useTheme();

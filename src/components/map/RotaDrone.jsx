@@ -16,7 +16,7 @@ export default function RotaDrone() {
 
   useMapEvents({
     click(e) {
-      if (!pontoPartida.length) {
+      if (!pontoPartida?.length) {
         const latlng = Object.values(e.latlng);
 
         setPontoPartida(latlng);
@@ -24,7 +24,7 @@ export default function RotaDrone() {
         return;
       }
 
-      if (!pontoChegada.length) {
+      if (!pontoChegada?.length) {
         const latlng = Object.values(e.latlng);
 
         setPontoChegada(latlng);
@@ -42,9 +42,7 @@ export default function RotaDrone() {
 
   function validaPontoPartida() {
     return (
-      pontoPartida.length &&
-      !pontoPartida.some((p) => !p) &&
-      !pontoChegada.length
+      pontoPartida && !pontoPartida.some((p) => !p) && !pontoChegada?.length
     );
   }
 

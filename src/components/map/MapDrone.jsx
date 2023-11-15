@@ -9,7 +9,7 @@ export default function MapaDrone() {
   return (
     <MapContainer
       id="map"
-      center={pontoPartida}
+      center={pontoPartida || [51.505, -0.09]}
       zoom={13}
       scrollWheelZoom={false}
     >
@@ -18,14 +18,14 @@ export default function MapaDrone() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <RotaDrone />
-      {pontoPartida.length === 2 ? (
+      {pontoPartida?.length === 2 ? (
         <Marker position={pontoPartida}>
           <Popup>Ponto de partida</Popup>
         </Marker>
       ) : (
         <></>
       )}
-      {pontoChegada.length === 2 ? (
+      {pontoChegada?.length === 2 ? (
         <Marker position={pontoChegada}>
           <Popup>Ponto de chegada</Popup>
         </Marker>
