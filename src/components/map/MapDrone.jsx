@@ -1,45 +1,15 @@
-import { useEffect, useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMap,
-  useMapEvents,
-} from "react-leaflet";
+import RotaDrone from "./RotaDrone";
+import { Context } from "../../Context";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useContext } from "react";
 
-export default function MapaDrone({ pLat, pLng }) {
-  const [pontoPartida, setPontoPartida] = useState([]);
-  const [pontoChegada, setPontoChega] = useState([]);
-
-  const RotaDrone = function () {
-    const map = useMap();
-
-    useMapEvents({
-      click(e) {
-        debugger;
-        if (!pontoPartida.length) {
-          return setPontoPartida(Object.values(e.latlng));
-        }
-        if (!pontoChegada.length) {
-          return setPontoChega(Object.values(e.latlng));
-        }
-        setPontoChega([]);
-        setPontoPartida([]);
-        return;
-      },
-    });
-
-    useEffect(() => {
-      map.flyTo([pLat, pLng], map.getZoom());
-    }, [pLat, pLng]);
-    return null;
-  };
+export default function MapaDrone() {
+  const { pontoPartida, pontoChegada } = useContext(Context);
 
   return (
     <MapContainer
       id="map"
-      center={[pLat, pLng]}
+      center={pontoPartida}
       zoom={13}
       scrollWheelZoom={false}
     >
