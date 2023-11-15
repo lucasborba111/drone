@@ -1,10 +1,17 @@
 import RotaDrone from "./RotaDrone";
 import { Context } from "../../Context";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from "react-leaflet";
 import { useContext } from "react";
 
 export default function MapaDrone() {
   const { pontoPartida, pontoChegada } = useContext(Context);
+  const clackLineOptions = { color: "black" };
 
   return (
     <MapContainer
@@ -29,6 +36,14 @@ export default function MapaDrone() {
         <Marker position={pontoChegada}>
           <Popup>Ponto de chegada</Popup>
         </Marker>
+      ) : (
+        <></>
+      )}
+      {pontoPartida?.length && pontoChegada?.length ? (
+        <Polyline
+          pathOptions={clackLineOptions}
+          positions={[pontoPartida, pontoChegada]}
+        />
       ) : (
         <></>
       )}

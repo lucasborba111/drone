@@ -41,9 +41,7 @@ export default function RotaDrone() {
   });
 
   function validaPontoPartida() {
-    return (
-      pontoPartida && !pontoPartida.some((p) => !p) && !pontoChegada?.length
-    );
+    return pontoPartida && !pontoPartida.some((p) => !p);
   }
 
   useEffect(() => {
