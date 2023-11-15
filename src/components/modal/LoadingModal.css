@@ -23,3 +23,9 @@ body.active-modal {
   border-radius: 3px;
   z-index: 1;
 }
+
+#drone-img {
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+}

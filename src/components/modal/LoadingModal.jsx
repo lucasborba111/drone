@@ -10,7 +10,12 @@ export default function LoadingModal() {
       {loading && (
         <div className="modal">
           <div className="modal-content">
-            <img alt="dronegif" src="/drone-sky.gif" height={100} />
+            <img
+              id="drone-img"
+              alt="dronegif"
+              src="/drone-sky.gif"
+              height={100}
+            />
             <p style={{ color: "#ffffff" }}>Calculando rota...</p>
           </div>
         </div>
