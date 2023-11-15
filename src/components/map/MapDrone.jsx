@@ -27,7 +27,7 @@ export default function MapaDrone() {
       )}
       {pontoChegada.length ? (
         <Marker position={pontoChegada}>
-          <Popup>Ponto de partida</Popup>
+          <Popup>Ponto de chegada</Popup>
         </Marker>
       ) : (
         <></>

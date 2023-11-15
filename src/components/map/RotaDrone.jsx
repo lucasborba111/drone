@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Context } from "../../Context";
 import { useMap, useMapEvents } from "react-leaflet";
 
 export default function RotaDrone() {
+  const map = useMap();
   const { pontoPartida, setPontoPartida, pontoChegada, setPontoChegada } =
     useContext(Context);
-  const map = useMap();
 
   useMapEvents({
     click(e) {
@@ -29,5 +28,6 @@ export default function RotaDrone() {
       map.flyTo(pontoPartida, map.getZoom());
     }
   }, [pontoPartida]);
+
   return null;
 }
