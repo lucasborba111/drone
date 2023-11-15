@@ -12,13 +12,17 @@ function getDtoRota(e) {
   return dto;
 }
 
-async function calculaRota(e, setPontoPartida, setPontoChegada) {
+async function calculaRota(e, setPontoPartida, setPontoChegada, setLoading) {
   e.preventDefault();
 
   const dto = getDtoRota(e);
 
-  if (dto.pLat && dto.pLng) setPontoPartida([dto.pLat, dto.pLng]);
-  if (dto.cLat && dto.cLng) setPontoChegada([dto.cLat, dto.cLng]);
+  setLoading(true);
+  setTimeout(() => {
+    setLoading(false);
+    if (dto.pLat && dto.pLng) setPontoPartida([dto.pLat, dto.pLng]);
+    if (dto.cLat && dto.cLng) setPontoChegada([dto.cLat, dto.cLng]);
+  }, 3000);
 }
 
 export { calculaRota };

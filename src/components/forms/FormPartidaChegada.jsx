@@ -19,12 +19,16 @@ export default function FormPartidaChegada() {
     setPLng,
     setCLat,
     setCLng,
+    loading,
+    setLoading,
   } = useContext(Context);
 
   return (
     <form
       className="formulario"
-      onSubmit={(e) => calculaRota(e, setPontoPartida, setPontoChegada)}
+      onSubmit={(e) =>
+        calculaRota(e, setPontoPartida, setPontoChegada, setLoading)
+      }
     >
       <h3>Calcular rota de entrega</h3>
 
@@ -95,7 +99,7 @@ export default function FormPartidaChegada() {
 
       <LoadingButton
         type="submit"
-        loading={false}
+        loading={loading}
         loadingIndicator="Carregando..."
         variant="contained"
         sx={{ position: "relative", marginTop: "auto", width: "80%" }}

@@ -1,18 +1,14 @@
 import "./App.css";
 import MapaDrone from "./components/map/MapDrone";
 import FormPartidaChegada from "./components/forms/FormPartidaChegada";
+import LoadingModal from "./components/modal/LoadingModal";
 
 function App() {
   return (
     <div className="App">
-      {/*       {loading ? (
-        <img alt="qualquercoisa" src="/drone.gif" width={300} height={300} />
-      ) : (
-        <> */}
       <FormPartidaChegada />
       <MapaDrone />
-      {/* </>
-      )} */}
+      <LoadingModal />
     </div>
   );
 }

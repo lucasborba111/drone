@@ -3,6 +3,7 @@ import { useState, createContext } from "react";
 const Context = createContext();
 
 function ContextProvider(props) {
+  const [loading, setLoading] = useState(false);
   const [pontoPartida, setPontoPartida] = useState(null);
   const [pontoChegada, setPontoChegada] = useState(null);
 
@@ -47,6 +48,8 @@ function ContextProvider(props) {
         limpaCoordenadas,
         setPLatLng,
         setCLatLng,
+        loading,
+        setLoading,
       }}
     >
       {props.children}
