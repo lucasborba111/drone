@@ -19,7 +19,7 @@ async function calculaRota(e, setPontoPartida, setPontoChegada, setLoading) {
 
   setLoading(true);
   setTimeout(() => {
-    // setLoading(false);
+    setLoading(false);
     if (dto.pLat && dto.pLng) setPontoPartida([dto.pLat, dto.pLng]);
     if (dto.cLat && dto.cLng) setPontoChegada([dto.cLat, dto.cLng]);
   }, 3000);
